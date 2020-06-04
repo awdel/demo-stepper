@@ -1,6 +1,7 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = (env, argv) => {
@@ -19,6 +20,9 @@ module.exports = (env, argv) => {
             ignored: /node_modules/,
             poll: true
         },
+        devServer: {
+            contentBase: './dist',
+        },
         module: {
             rules: [
                 {
@@ -32,7 +36,7 @@ module.exports = (env, argv) => {
                             }
                         },
                         {
-                            loader: "eslint-loader"
+                            loader: 'eslint-loader'
                         }
                     ]
                 },
@@ -43,24 +47,28 @@ module.exports = (env, argv) => {
                             loader: MiniCssExtractPlugin.loader
                         },
                         {
-                            loader: "css-loader",
+                            loader: 'css-loader',
                         },
                         {
-                            loader: "postcss-loader",
+                            loader: 'postcss-loader',
                         },
                         {
-                            loader: "sass-loader",
+                            loader: 'sass-loader',
                             options: {
-                                implementation: require("sass")
+                                implementation: require('sass')
                             }
                         }
                     ]
-                }
+                },
+                { 
+                    test: /\.pug$/,
+                    use: ['pug-loader']
+                },
             ]
         },
         plugins: [
             new MiniCssExtractPlugin({
-                filename: "css/styles.css"
+                filename: 'css/styles.css'
             }),
             new CopyPlugin({
                 patterns: [
@@ -70,7 +78,11 @@ module.exports = (env, argv) => {
             new ImageminPlugin({
                 disable: argv.mode === 'development' ? true : false,
                 test: 'img/**'
-            })
+            }),
+            new HtmlWebpackPlugin({
+                template: './src/index.pug',
+                filename: 'index.html'
+            }),
         ]
     };
 };
