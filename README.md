@@ -1,4 +1,4 @@
-## Base project for a Node Project
+## Base project for a Node Web Project
 
 DEV
 ```
