@@ -62,7 +62,14 @@ module.exports = (env, argv) => {
                 },
                 { 
                     test: /\.pug$/,
-                    use: ['pug-loader']
+                    use: [
+                        {
+                            loader: 'pug-loader',
+                            options: {
+                                pretty: true
+                            }
+                        }
+                    ]
                 },
             ]
         },
@@ -81,7 +88,8 @@ module.exports = (env, argv) => {
             }),
             new HtmlWebpackPlugin({
                 template: './src/index.pug',
-                filename: 'index.html'
+                filename: 'index.html',
+                inject: false
             }),
         ]
     };
