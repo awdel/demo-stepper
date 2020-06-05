@@ -3,8 +3,24 @@ const CopyPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const fs = require('fs');
+var readdirp = require('readdirp');
 
-module.exports = (env, argv) => {
+const init = async (env, argv) => {
+    const files = await readdirp.promise('./src/views');
+    const htmlPlugins = files.map(entry => {
+        const parts = entry.basename.split('.');
+        const name = parts[0];
+        const extension = parts[1];
+        const filepath = entry.path.replace(entry.basename, '');
+        console.log('');
+        // Create new HTMLWebpackPlugin with options
+        return new HtmlWebpackPlugin({
+            filename: `${filepath}${name}.html`,
+            template: path.resolve(__dirname, `src/views/${filepath}${name}.${extension}`),
+            hash: true
+        })
+    })
     return {
         entry: './src/js/index.js',
         output: {
@@ -85,12 +101,9 @@ module.exports = (env, argv) => {
             new ImageminPlugin({
                 disable: argv.mode === 'development' ? true : false,
                 test: 'img/**'
-            }),
-            new HtmlWebpackPlugin({
-                template: './src/index.pug',
-                filename: 'index.html',
-                inject: false
-            }),
-        ]
+            })
+        ].concat(htmlPlugins)
     };
-};
+}
+
+module.exports = init;
