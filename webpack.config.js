@@ -3,11 +3,10 @@ const CopyPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const fs = require('fs');
-var readdirp = require('readdirp');
+const readdirp = require('readdirp');
 
 const init = async (env, argv) => {
-    const files = await readdirp.promise('./src/views');
+    const files = await readdirp.promise('./src/views', {fileFilter: '*.pug'});
     const htmlPlugins = files.map(entry => {
         const parts = entry.basename.split('.');
         const name = parts[0];
@@ -22,13 +21,12 @@ const init = async (env, argv) => {
         })
     })
     return {
-        entry: './src/js/index.js',
+        entry: './src/index.js',
         output: {
             path: path.resolve(__dirname, 'dist'),
             filename: 'js/scripts.js',
-            library: 'myLibrary',
-            libraryTarget: 'umd',
-            umdNamedDefine: true
+            library: 'MyLibrary',
+            libraryTarget: 'var'
         },
         devtool: argv.mode === 'development' ? 'source-map' : false,
         watch: argv.mode === 'development' ? true : false,
@@ -104,6 +102,5 @@ const init = async (env, argv) => {
             })
         ].concat(htmlPlugins)
     };
-}
-
+};
 module.exports = init;
