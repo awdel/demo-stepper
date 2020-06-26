@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyPlugin = require('copy-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ImageminWebPackPlugin = require('imagemin-webpack-plugin').default;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const readdirp = require('readdirp');
@@ -91,12 +91,12 @@ const init = async (env, argv) => {
             new MiniCssExtractPlugin({
                 filename: 'css/styles.css'
             }),
-            new CopyPlugin({
+            new CopyWebpackPlugin({
                 patterns: [
-                    { from: 'src/img/', to: 'img/' },
+                    { from: 'src/img/', to: 'img/', noErrorOnMissing: true },
                 ],
             }),
-            new ImageminPlugin({
+            new ImageminWebPackPlugin({
                 disable: argv.mode === 'development' ? true : false,
                 test: 'img/**'
             })
