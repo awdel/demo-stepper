@@ -1,0 +1,12 @@
+@use 'norm-reset';
+@use 'components/stepper';
+
+@import url(https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap);
+
+html{
+    font-size: 62.5%;
+    body{
+        font-family: 'PT Sans';
+        font-size: 1.6rem;
+    }
+}

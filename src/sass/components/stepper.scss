@@ -1,0 +1,229 @@
+$icon-check: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'%3E%3C/path%3E%3C/svg%3E";
+$icon-exclamation: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 512'%3E%3Cpath fill='%23fff' d='M176 432c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80zM25.26 25.199l13.6 272C39.499 309.972 50.041 320 62.83 320h66.34c12.789 0 23.331-10.028 23.97-22.801l13.6-272C167.425 11.49 156.496 0 142.77 0H49.23C35.504 0 24.575 11.49 25.26 25.199z'%3E%3C/path%3E%3C/svg%3E";
+$colour-white: #fff;
+$colour-grey-light: #f5f5f5;
+$colour-grey-mid: #ebebeb;
+$colour-grey-dark: #8c8c8c;
+$colour-active: #e60670;
+$colour-active-darker: #890445;
+$colour-complete: #008080;
+$colour-issue: #ff5722;
+$size-circle-outer: 4.4rem;
+$size-circle-inner: 3.4rem;
+$size-circle-inner-grow: 3.8rem;
+$size-circle-icon: 1.4rem;
+$size-stage-width: 10.6rem;
+.stepper{
+  display: inline-flex;
+  padding: 1rem;
+  a.stage{
+    display: inline-block;
+    text-decoration: none;
+    width: $size-stage-width;
+    .step{
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: $size-circle-outer;
+      &:before,
+      &:after{
+        content: "";
+        display: inline-block;
+        height: 0.8rem;
+        width: 50%;
+        background-color: $colour-grey-light;
+        border: 0 solid $colour-grey-mid;
+        border-width: 1px 0;
+        transition: all 0.25s ease-in-out 0s;
+      }
+      .circle-outer{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: $size-circle-outer;
+        width: $size-circle-outer;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: calc((#{$size-circle-outer} / 2) + 1px);
+        transition: all 0.25s ease-in-out 0s;
+        .circle-inner{
+          height: $size-circle-inner;
+          width: $size-circle-inner;
+          background-color: $colour-grey-light;
+          border: 1px solid $colour-grey-mid;
+          border-radius: calc((#{$size-circle-inner} / 2) + 1px);
+          transition: all 0.25s ease-in-out 0s;
+        }
+        .stage-label{
+          position: absolute;
+          font-weight: bold;
+          font-size: 2rem;
+          color: $colour-grey-dark;
+          transition: all 0.25s ease-in-out 0s;
+        }
+        .circle-icon{
+          position: absolute;
+          top: 0;
+          right: 0;
+          display: none;
+          height: $size-circle-icon;
+          width: $size-circle-icon;
+          border: 1px solid white;
+          border-radius: calc((#{$size-circle-icon} / 2) + 1px);
+          background-repeat: no-repeat;
+          background-position: center;
+          transition: all 0.25s ease-in-out 0s;
+        }
+      }
+    }
+    &:first-of-type,
+    &.complete:first-of-type,
+    &.active:first-of-type{
+      .step:before{
+        background-color: transparent;
+        border: 0;
+      }
+    }
+    &:last-of-type,
+    &.active:last-of-type,
+    &.complete:last-of-type,
+    &.issue:last-of-type{
+      .step:after{
+        background-color: transparent;
+        border: 0;
+      }
+    }
+    &.active{
+      .step{
+        .circle-outer{
+          background-color: white;
+          .stage-label{
+            color: white;
+          }
+        }
+      }
+    }
+    &.complete,
+    &.issue{
+      .step{
+        .circle-outer{
+          background-color: transparent;
+          .stage-label{
+            color: white;
+          }
+        }
+      }
+    }
+    &.active{
+      .step{
+        &:before,
+        &:after{
+          background-color: $colour-active;
+          border-color: $colour-active;
+        }
+        .circle-outer{
+          border-color: $colour-active-darker;
+          .circle-inner{
+            background-color: $colour-active;
+          }
+        }
+      }
+      label{
+        border-color: $colour-active;
+        font-weight: bold;
+      }
+    }
+    &.issue{
+      .step{
+        &:before,
+        &:after{
+          background-color: $colour-issue;
+          border-color: $colour-issue;
+        }
+        .circle-outer{
+          .circle-inner{
+            background-color: $colour-issue;
+            border-color: $colour-issue;
+          }
+          .circle-icon{
+            display: inline-flex;
+            background-color: $colour-issue;
+            background-size: 0.3rem;
+            background-image: url($icon-exclamation);
+          }
+        }
+      }
+    }
+    &.complete{
+      .step{
+        &:before,
+        &:after{
+          background-color: $colour-complete;
+          border-color: $colour-complete;
+        }
+        .circle-outer{
+          .circle-inner{
+            background-color: $colour-complete;
+            border-color: $colour-complete;
+          }
+          .circle-icon{
+            display: inline-flex;
+            background-color: $colour-complete;
+            background-size: 0.8rem;
+            background-image: url($icon-check);
+          }
+        }
+      }
+    }
+    label{
+      display: block;
+      padding: 0.2rem 0.4rem;
+      border-bottom: 0.4rem solid transparent;
+      text-align: center;
+      font-size: 1.4rem;
+      color: #4a4a4a;
+      cursor: pointer;
+      transition: all 0.25s ease-in-out 0s;
+    }
+    &:hover{
+      .step{
+        .circle-outer{
+          .circle-inner{
+            height: $size-circle-inner-grow;
+            width: $size-circle-inner-grow;
+            border-radius: calc((#{$size-circle-inner-grow} / 2) + 1px);
+          }
+        }
+      }
+    }
+    &.complete:hover{
+      label{
+        border-color: $colour-complete;
+      }
+    }
+    &.issue:hover{
+      label{
+        border-color: $colour-issue;
+      }
+    }
+    &:not(.complete):not(.issue):not(.active):hover{
+      .step{
+        .circle-outer{
+          .circle-inner{
+            background-color: $colour-grey-dark;
+          }
+          .stage-label{
+            color: white;
+          }
+        }
+      }
+      label{
+        border-color: $colour-grey-dark;
+      }
+    }
+  }
+}
