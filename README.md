@@ -2,11 +2,11 @@
 
 DEV
 ```
-npm run build:dev
-npm run start:dev
+npm run build-dev
+npm run start-dev
 ```
 
 PRODUCTION
 ```
-npm run build:prod
+npm run build-prod
 ```
