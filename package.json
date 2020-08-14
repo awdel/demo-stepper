@@ -11,7 +11,8 @@
   "scripts": {
     "build:dev": "webpack --config webpack.config.js --mode development",
     "start:dev": "webpack-dev-server --config webpack.config.js --mode development --open",
-    "build:prod": "webpack --config webpack.config.js --mode production"
+    "build:prod": "webpack --config webpack.config.js --mode production",
+    "build:gh-pages": "git subtree push --prefix dist origin gh-pages"
   },
   "browserslist": [
     "last 4 version"
