@@ -1,12 +1,12 @@
 {
-  "name": "base-node-project",
+  "name": "demo-stepper",
   "version": "0.1.0",
   "contributors": [
     {
       "name": "Adam Delaney"
     }
   ],
-  "description": "Base project for a Node Project",
+  "description": "Demo Stepper",
   "main": "dist/bundle.js",
   "scripts": {
     "build:dev": "webpack --config webpack.config.js --mode development",
