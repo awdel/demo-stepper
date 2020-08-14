@@ -129,7 +129,7 @@ $size-stage-width: 10.6rem;
           border-color: $colour-active-darker;
           .circle-inner{
             background-color: $colour-active;
-            border-color: $colour-issue;
+            border-color: $colour-active;
           }
         }
       }
@@ -190,7 +190,8 @@ $size-stage-width: 10.6rem;
       cursor: pointer;
       transition: all 0.25s ease-in-out 0s;
     }
-    &:hover{
+    &:hover,
+    &:focus{
       .step{
         .circle-outer{
           .circle-inner{
@@ -201,21 +202,25 @@ $size-stage-width: 10.6rem;
         }
       }
     }
-    &.complete:hover{
+    &.complete:hover,
+    &.complete:focus{
       label{
         border-color: $colour-complete;
       }
     }
-    &.issue:hover{
+    &.issue:hover,
+    &.issue:focus{
       label{
         border-color: $colour-issue;
       }
     }
-    &:not(.complete):not(.issue):not(.active):hover{
+    &:not(.complete):not(.issue):not(.active):hover,
+    &:not(.complete):not(.issue):not(.active):focus{
       .step{
         .circle-outer{
           .circle-inner{
             background-color: $colour-grey-dark;
+            border-color: $colour-grey-dark;
           }
           .stage-label{
             color: white;
