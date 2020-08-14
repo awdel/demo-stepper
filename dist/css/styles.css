@@ -1,0 +1,209 @@
+@import url(https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap);
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "PT Sans";
+  font-size: 1.6rem;
+}
+
+.stepper {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 1rem;
+}
+.stepper a.stage {
+  display: inline-block;
+  text-decoration: none;
+  width: 10.6rem;
+}
+.stepper a.stage .step {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 4.4rem;
+}
+.stepper a.stage .step:before, .stepper a.stage .step:after {
+  content: "";
+  display: inline-block;
+  height: 0.8rem;
+  width: 50%;
+  background-color: #f5f5f5;
+  border: 0 solid #ebebeb;
+  border-width: 1px 0;
+  -webkit-transition: all 0.25s ease-in-out 0s;
+  -o-transition: all 0.25s ease-in-out 0s;
+  transition: all 0.25s ease-in-out 0s;
+}
+.stepper a.stage .step .circle-outer {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 4.4rem;
+  width: 4.4rem;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: calc((4.4rem / 2) + 1px);
+  -webkit-transition: all 0.25s ease-in-out 0s;
+  -o-transition: all 0.25s ease-in-out 0s;
+  transition: all 0.25s ease-in-out 0s;
+}
+.stepper a.stage .step .circle-outer .circle-inner {
+  height: 3.4rem;
+  width: 3.4rem;
+  background-color: #f5f5f5;
+  border: 1px solid #ebebeb;
+  border-radius: calc((3.4rem / 2) + 1px);
+  -webkit-transition: all 0.25s ease-in-out 0s;
+  -o-transition: all 0.25s ease-in-out 0s;
+  transition: all 0.25s ease-in-out 0s;
+}
+.stepper a.stage .step .circle-outer .stage-label {
+  position: absolute;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #8c8c8c;
+  -webkit-transition: all 0.25s ease-in-out 0s;
+  -o-transition: all 0.25s ease-in-out 0s;
+  transition: all 0.25s ease-in-out 0s;
+}
+.stepper a.stage .step .circle-outer .circle-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  height: 1.4rem;
+  width: 1.4rem;
+  border: 1px solid white;
+  border-radius: calc((1.4rem / 2) + 1px);
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-transition: all 0.25s ease-in-out 0s;
+  -o-transition: all 0.25s ease-in-out 0s;
+  transition: all 0.25s ease-in-out 0s;
+}
+.stepper a.stage:first-of-type .step:before, .stepper a.stage.complete:first-of-type .step:before, .stepper a.stage.active:first-of-type .step:before {
+  background-color: transparent;
+  border: 0;
+}
+.stepper a.stage:last-of-type .step:after, .stepper a.stage.active:last-of-type .step:after, .stepper a.stage.complete:last-of-type .step:after, .stepper a.stage.issue:last-of-type .step:after {
+  background-color: transparent;
+  border: 0;
+}
+.stepper a.stage.active .step .circle-outer {
+  background-color: white;
+}
+.stepper a.stage.active .step .circle-outer .stage-label {
+  color: white;
+}
+.stepper a.stage.complete .step .circle-outer, .stepper a.stage.issue .step .circle-outer {
+  background-color: transparent;
+}
+.stepper a.stage.complete .step .circle-outer .stage-label, .stepper a.stage.issue .step .circle-outer .stage-label {
+  color: white;
+}
+.stepper a.stage.active .step:before, .stepper a.stage.active .step:after {
+  background-color: #e60670;
+  border-color: #e60670;
+}
+.stepper a.stage.active .step .circle-outer {
+  border-color: #890445;
+}
+.stepper a.stage.active .step .circle-outer .circle-inner {
+  background-color: #e60670;
+}
+.stepper a.stage.active label {
+  border-color: #e60670;
+  font-weight: bold;
+}
+.stepper a.stage.issue .step:before, .stepper a.stage.issue .step:after {
+  background-color: #ff5722;
+  border-color: #ff5722;
+}
+.stepper a.stage.issue .step .circle-outer .circle-inner {
+  background-color: #ff5722;
+  border-color: #ff5722;
+}
+.stepper a.stage.issue .step .circle-outer .circle-icon {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background-color: #ff5722;
+  background-size: 0.3rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 512'%3E%3Cpath fill='%23fff' d='M176 432c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80zM25.26 25.199l13.6 272C39.499 309.972 50.041 320 62.83 320h66.34c12.789 0 23.331-10.028 23.97-22.801l13.6-272C167.425 11.49 156.496 0 142.77 0H49.23C35.504 0 24.575 11.49 25.26 25.199z'%3E%3C/path%3E%3C/svg%3E");
+}
+.stepper a.stage.complete .step:before, .stepper a.stage.complete .step:after {
+  background-color: #008080;
+  border-color: #008080;
+}
+.stepper a.stage.complete .step .circle-outer .circle-inner {
+  background-color: #008080;
+  border-color: #008080;
+}
+.stepper a.stage.complete .step .circle-outer .circle-icon {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background-color: #008080;
+  background-size: 0.8rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23fff' d='M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z'%3E%3C/path%3E%3C/svg%3E");
+}
+.stepper a.stage label {
+  display: block;
+  padding: 0.2rem 0.4rem;
+  border-bottom: 0.4rem solid transparent;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #4a4a4a;
+  cursor: pointer;
+  -webkit-transition: all 0.25s ease-in-out 0s;
+  -o-transition: all 0.25s ease-in-out 0s;
+  transition: all 0.25s ease-in-out 0s;
+}
+.stepper a.stage:hover .step .circle-outer .circle-inner {
+  height: 3.8rem;
+  width: 3.8rem;
+  border-radius: calc((3.8rem / 2) + 1px);
+}
+.stepper a.stage.complete:hover label {
+  border-color: #008080;
+}
+.stepper a.stage.issue:hover label {
+  border-color: #ff5722;
+}
+.stepper a.stage:not(.complete):not(.issue):not(.active):hover .step .circle-outer .circle-inner {
+  background-color: #8c8c8c;
+}
+.stepper a.stage:not(.complete):not(.issue):not(.active):hover .step .circle-outer .stage-label {
+  color: white;
+}
+.stepper a.stage:not(.complete):not(.issue):not(.active):hover label {
+  border-color: #8c8c8c;
+}
+
+/*# sourceMappingURL=styles.css.map*/
