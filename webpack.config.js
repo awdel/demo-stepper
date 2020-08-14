@@ -35,7 +35,7 @@ const init = async (env, argv) => {
             poll: true
         },
         devServer: {
-            contentBase: './dist',
+            contentBase: path.join(__dirname, 'dist'),
         },
         module: {
             rules: [
