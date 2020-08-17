@@ -9,74 +9,86 @@ $colour-active-darker: #890445;
 $colour-complete: #008080;
 $colour-issue: #ff5722;
 $size-circle-outer: 4.4rem;
+$size-circle-outer-radius: ($size-circle-outer / 2) + 0.1rem;
 $size-circle-inner: 3.4rem;
+$size-circle-inner-radius: ($size-circle-inner / 2) + 0.1rem;
 $size-circle-inner-grow: 3.8rem;
 $size-circle-icon: 1.4rem;
+$size-circle-icon-radius: ($size-circle-icon / 2) + 0.1rem;
 $size-stage-width: 10.6rem;
-.stepper{
+ul.stepper{
   display: inline-flex;
   padding: 1rem;
-  a.stage{
-    display: inline-block;
+  li.stage{
+    display: inline-flex;
     text-decoration: none;
     width: $size-stage-width;
-    .step{
-      position: relative;
+    a{
       display: flex;
-      align-items: center;
-      justify-content: center;
-      height: $size-circle-outer;
-      &:before,
-      &:after{
-        content: "";
-        display: inline-block;
-        height: 0.8rem;
-        width: 50%;
-        background-color: $colour-grey-light;
-        border: 0 solid $colour-grey-mid;
-        border-width: 1px 0;
-        transition: all 0.25s ease-in-out 0s;
-      }
-      .circle-outer{
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+      flex-direction: column;
+      flex: 1 1 100%;
+      .step{
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         height: $size-circle-outer;
-        width: $size-circle-outer;
-        background-color: transparent;
-        border: 1px solid transparent;
-        border-radius: calc((#{$size-circle-outer} / 2) + 1px);
-        transition: all 0.25s ease-in-out 0s;
-        .circle-inner{
-          height: $size-circle-inner;
-          width: $size-circle-inner;
+        &:before,
+        &:after{
+          content: "";
+          display: inline-block;
+          height: 0.8rem;
+          width: 50%;
           background-color: $colour-grey-light;
-          border: 1px solid $colour-grey-mid;
-          border-radius: calc((#{$size-circle-inner} / 2) + 1px);
+          border: 0 solid $colour-grey-mid;
+          border-width: 1px 0;
           transition: all 0.25s ease-in-out 0s;
         }
-        .stage-label{
-          position: absolute;
-          font-weight: bold;
-          font-size: 2rem;
-          color: $colour-grey-dark;
-          transition: all 0.25s ease-in-out 0s;
-        }
-        .circle-icon{
+        .circle-outer{
           position: absolute;
           top: 0;
-          right: 0;
-          display: none;
-          height: $size-circle-icon;
-          width: $size-circle-icon;
-          border: 1px solid white;
-          border-radius: calc((#{$size-circle-icon} / 2) + 1px);
-          background-repeat: no-repeat;
-          background-position: center;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: $size-circle-outer;
+          width: $size-circle-outer;
+          background-color: transparent;
+          border: 1px solid transparent;
+          border-radius: $size-circle-outer-radius;
           transition: all 0.25s ease-in-out 0s;
+          .circle-inner{
+            height: $size-circle-inner;
+            width: $size-circle-inner;
+            background-color: $colour-grey-light;
+            border: 1px solid $colour-grey-mid;
+            border-radius: $size-circle-inner-radius;
+            transition: all 0.25s ease-in-out 0s;
+          }
+          .stage-label{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            font-size: 2rem;
+            color: $colour-grey-dark;
+            transition: all 0.25s ease-in-out 0s;
+          }
+          .circle-icon{
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: none;
+            height: $size-circle-icon;
+            width: $size-circle-icon;
+            border: 1px solid white;
+            border-radius: $size-circle-icon-radius;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: all 0.25s ease-in-out 0s;
+          }
         }
       }
     }
@@ -181,7 +193,10 @@ $size-stage-width: 10.6rem;
       }
     }
     label{
-      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1 1 auto;
       padding: 0.2rem 0.4rem;
       border-bottom: 0.4rem solid transparent;
       text-align: center;

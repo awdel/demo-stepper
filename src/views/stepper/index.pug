@@ -1,0 +1,61 @@
+extends ../../layout
+
+block content
+    //- Class options for a.stage (active|issue|complete)
+    ul.stepper
+        li.stage.complete
+            a(href='#')
+                .step
+                    .circle-outer
+                        .circle-inner
+                        .stage-label(aria-hidden='true') A
+                        .circle-icon
+                label(aria-label='Section A - Personal - Complete') Personal
+        li.stage.issue
+            a(href='#')
+                .step
+                    .circle-outer
+                        .circle-inner
+                        .stage-label(aria-hidden='true') B
+                        .circle-icon
+                label(aria-label='Section B - Nationality - Issue') Nationality
+        li.stage.complete
+            a(href='#')
+                .step
+                    .circle-outer
+                        .circle-inner
+                        .stage-label(aria-hidden='true') C
+                        .circle-icon
+                label(aria-label='Section C - Course - Complete') Course
+        li.stage.active
+            a(href='#')
+                .step
+                    .circle-outer
+                        .circle-inner
+                        .stage-label(aria-hidden='true') D
+                        .circle-icon
+                label(aria-label='Section D - Relevant Parties - Active') Relevant Parties
+        li.stage
+            a(href='#')
+                .step
+                    .circle-outer
+                        .circle-inner
+                        .stage-label(aria-hidden='true') E
+                        .circle-icon
+                label(aria-label='Section E - Dependants - Pending') Dependants
+        li.stage
+            a(href='#')
+                .step
+                    .circle-outer
+                        .circle-inner
+                        .stage-label(aria-hidden='true') F
+                        .circle-icon
+                label(aria-label='Section F - Income - Pending') Income
+        li.stage
+            a(href='#')
+                .step
+                    .circle-outer
+                        .circle-inner
+                        .stage-label(aria-hidden='true') G
+                        .circle-icon
+                label(aria-label='Section G - Summary - Pending') Summary
