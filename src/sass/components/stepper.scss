@@ -6,23 +6,22 @@ $colour-grey-mid: #ebebeb;
 $colour-grey-dark: #8c8c8c;
 $colour-active: #e60670;
 $colour-active-darker: #890445;
+@import url(https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap);
 $colour-complete: #008080;
 $colour-issue: #ff5722;
 $size-circle-outer: 4.4rem;
-$size-circle-outer-radius: ($size-circle-outer / 2) + 0.1rem;
 $size-circle-inner: 3.4rem;
-$size-circle-inner-radius: ($size-circle-inner / 2) + 0.1rem;
 $size-circle-inner-grow: 3.8rem;
 $size-circle-icon: 1.4rem;
-$size-circle-icon-radius: ($size-circle-icon / 2) + 0.1rem;
-$size-stage-width: 10.6rem;
 ul.stepper{
-  display: inline-flex;
+  display: flex;
+  max-width: 76rem;
   padding: 1rem;
   li.stage{
+    position: relative;
     display: inline-flex;
+    flex: 1;
     text-decoration: none;
-    width: $size-stage-width;
     a{
       display: flex;
       flex-direction: column;
@@ -33,6 +32,9 @@ ul.stepper{
         align-items: center;
         justify-content: center;
         height: $size-circle-outer;
+        @include media("<=medium") {
+          height: $size-circle-outer * 0.9;
+        }
         &:before,
         &:after{
           content: "";
@@ -56,15 +58,31 @@ ul.stepper{
           width: $size-circle-outer;
           background-color: transparent;
           border: 1px solid transparent;
-          border-radius: $size-circle-outer-radius;
+          border-radius: ($size-circle-outer / 2) + 0.1rem;
           transition: all 0.25s ease-in-out 0s;
+          @include media(">medium", "<=large") {
+            height: $size-circle-outer * 0.95;
+            width: $size-circle-outer * 0.95;
+          }
+          @include media("<=medium") {
+            height: $size-circle-outer * 0.9;
+            width: $size-circle-outer * 0.9;
+          }
           .circle-inner{
             height: $size-circle-inner;
             width: $size-circle-inner;
             background-color: $colour-grey-light;
             border: 1px solid $colour-grey-mid;
-            border-radius: $size-circle-inner-radius;
+            border-radius: ($size-circle-inner / 2) + 0.1rem;
             transition: all 0.25s ease-in-out 0s;
+            @include media(">medium", "<=large") {
+              height: $size-circle-inner * 0.95;
+              width: $size-circle-inner * 0.95;
+            }
+            @include media("<=medium") {
+              height: $size-circle-inner * 0.9;
+              width: $size-circle-inner * 0.9;
+            }
           }
           .stage-label{
             position: absolute;
@@ -75,6 +93,12 @@ ul.stepper{
             font-size: 2rem;
             color: $colour-grey-dark;
             transition: all 0.25s ease-in-out 0s;
+            @include media(">medium", "<=large") {
+              font-size: 1.95rem;
+            }
+            @include media("<=medium") {
+              font-size: 1.9rem;
+            }
           }
           .circle-icon{
             position: absolute;
@@ -84,7 +108,7 @@ ul.stepper{
             height: $size-circle-icon;
             width: $size-circle-icon;
             border: 1px solid white;
-            border-radius: $size-circle-icon-radius;
+            border-radius: ($size-circle-icon / 2) + 0.1rem;
             background-repeat: no-repeat;
             background-position: center;
             transition: all 0.25s ease-in-out 0s;
@@ -204,6 +228,24 @@ ul.stepper{
       color: #4a4a4a;
       cursor: pointer;
       transition: all 0.25s ease-in-out 0s;
+      @include media(">medium", "<=large") {
+        font-size: 1.3rem;
+      }
+      @include media("<=medium") {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        font-size: 1.2rem;
+      }
+    }
+    &:not(.active){
+      label{
+        @include media("<=medium") {
+          display: none;
+        }
+      }
     }
     &:hover,
     &:focus{

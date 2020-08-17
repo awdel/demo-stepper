@@ -1,12 +1,6 @@
-@use 'norm-reset';
-@use 'components/stepper';
+@import 'components/_include-media';
+@import 'components/_norm-reset';
+@import 'components/base';
+@import 'components/stepper';
 
-@import url(https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap);
-
-html{
-    font-size: 62.5%;
-    body{
-        font-family: 'PT Sans';
-        font-size: 1.6rem;
-    }
-}
+@import '../views/**/*.scss'; // import any additional scss files from views folder
