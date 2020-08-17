@@ -1,11 +1,13 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ImageminWebPackPlugin = require('imagemin-webpack-plugin').default;
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // Build one css file per js file
+const NodeSassGlobImporter = require('node-sass-glob-importer'); // Allow wildcards in scss imports - used for additional scss files in views
+const CopyWebpackPlugin = require('copy-webpack-plugin'); // Move images to dist
+const ImageminWebPackPlugin = require('imagemin-webpack-plugin').default; // Optimise images
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // HTML file generation
 const path = require('path');
 const readdirp = require('readdirp');
 
 const init = async (env, argv) => {
+    // Loop through 'views' to generate multiple html-webpack-plugin configurations
     const files = await readdirp.promise('./src/views', {fileFilter: '*.pug'});
     const htmlPlugins = files.map(entry => {
         const parts = entry.basename.split('.');
@@ -35,7 +37,7 @@ const init = async (env, argv) => {
             poll: true
         },
         devServer: {
-            contentBase: path.join(__dirname, 'dist'),
+            contentBase: './dist',
         },
         module: {
             rules: [
@@ -69,7 +71,10 @@ const init = async (env, argv) => {
                         {
                             loader: 'sass-loader',
                             options: {
-                                implementation: require('sass')
+                                implementation: require('sass'),
+                                sassOptions: {
+                                    importer: NodeSassGlobImporter()
+                                }
                             }
                         }
                     ]
