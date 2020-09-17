@@ -1,7 +1,7 @@
 export const Tabs = (function Tabs() {
     const obj = {};
     obj.init = function init() {
-        // Initialisation code here
+        // Initialisation
         const tabs = document.querySelectorAll('[role="tab"]');
         tabs.forEach((t) => t.addEventListener('click', this.tabClick));
     };
