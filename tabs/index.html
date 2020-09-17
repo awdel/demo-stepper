@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Demos">
+    <title>Demos</title>
+    <title>Tabs | Demos</title>
+  <link href="../css/styles.css?f6fa7dcc4b960f6d3303" rel="stylesheet"></head>
+  <body>
+    <header>
+    </header>
+    <main>
+      <div class="tabs">
+        <div role="tablist" aria-label="Form Parts">
+          <button role="tab" id="tab-part-1" aria-selected="true" aria-controls="panel-part-1">
+            <label>Part 1</label>
+            <div class="circle-icon"></div>
+          </button>
+          <button class="issue" role="tab" id="tab-part-2" aria-selected="false" aria-controls="panel-part-2">
+            <label>Part 2</label>
+            <div class="circle-icon"></div>
+          </button>
+          <button role="tab" id="tab-part-3" aria-selected="false" aria-controls="panel-part-3">
+            <label>Part 3</label>
+            <div class="circle-icon"></div>
+          </button>
+        </div>
+        <div class="tab-content">
+          <div class="tab" role="tabpanel" tabindex="0" id="panel-part-1" aria-labelledby="tab-part-1">This is the content of Part 1</div>
+          <div class="tab" role="tabpanel" tabindex="0" id="panel-part-2" aria-labelledby="tab-part-2" hidden>This is the content of Part 2</div>
+          <div class="tab" role="tabpanel" tabindex="0" id="panel-part-3" aria-labelledby="tab-part-3" hidden>This is the content of Part 3</div>
+        </div>
+      </div>
+    </main>
+    <footer>
+    </footer>
+  <script src="../js/scripts.js?f6fa7dcc4b960f6d3303"></script></body>
+</html>
