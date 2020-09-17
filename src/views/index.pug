@@ -1,5 +1,13 @@
 extends ../layout
 
+block head
+    title= "Components | " + title
+
 block content
-    a(href="stepper")
-        | Stepper
+    ul
+        li
+            a(href="stepper")
+                | Stepper
+        li
+            a(href="tabs")
+                | Tabs

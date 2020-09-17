@@ -1,5 +1,8 @@
 extends ../../layout
 
+block append head
+    title= "Stepper | " + title
+
 block content
     //- Class options for a.stage (active|issue|complete)
     ul.stepper

@@ -1,6 +1,7 @@
 @import 'components/_include-media';
 @import 'components/_norm-reset';
 @import 'components/base';
-@import 'components/stepper';
+@import 'components/susi_stepper';
+@import 'components/susi_tabs';
 
 @import '../views/**/*.scss'; // import any additional scss files from views folder

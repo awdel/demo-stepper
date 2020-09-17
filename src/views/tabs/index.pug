@@ -1,0 +1,28 @@
+extends ../../layout
+
+block append head
+    title= "Tabs | " + title
+
+block content
+    //- Class options for [role="tablist"] > button (issue)
+    .tabs
+        div(role="tablist", aria-label="Form Parts")
+            button(role="tab", id="tab-part-1", aria-selected="true", aria-controls="panel-part-1")
+                label
+                    | Part 1
+                .circle-icon
+            button(role="tab", id="tab-part-2", aria-selected="false", aria-controls="panel-part-2", class="issue")
+                label
+                    | Part 2
+                .circle-icon
+            button(role="tab", id="tab-part-3", aria-selected="false", aria-controls="panel-part-3")
+                label
+                    | Part 3
+                .circle-icon
+        .tab-content
+            .tab(role="tabpanel", tabindex="0", id="panel-part-1", aria-labelledby="tab-part-1")
+                | This is the content of Part 1
+            .tab(role="tabpanel", tabindex="0", id="panel-part-2", aria-labelledby="tab-part-2", hidden)
+                | This is the content of Part 2
+            .tab(role="tabpanel", tabindex="0", id="panel-part-3", aria-labelledby="tab-part-3", hidden)
+                | This is the content of Part 3

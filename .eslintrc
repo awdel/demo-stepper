@@ -10,5 +10,8 @@
         "linebreak-style": 0, /* Remove linebreak check due to discrepancy between Unix and Windows */
         "indent": [2, 4],
         "import/prefer-default-export": "off"
+    },
+    "env": {
+        "browser": true
     }
 }

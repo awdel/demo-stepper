@@ -1,0 +1,63 @@
+@import 'components/susi_base';
+[role="tablist"]{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 0.1rem solid $colour-grey-alt;
+
+    button{
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 12rem;
+        margin-bottom: -0.1rem;
+        padding: 1.5rem 0;
+        border-bottom: 0.3rem solid transparent;
+        transition: border-bottom-color 0.25s ease-in-out 0s;
+
+        @include media("<=medium") {
+            width: 100%;
+        }
+
+        *{
+            pointer-events: none;
+        }
+
+        label{
+            cursor: pointer;
+        }
+
+        .circle-icon{
+            position: absolute;
+            transform: translateX(35px);
+            display: none;
+            height: $size-circle-icon;
+            width: $size-circle-icon;
+            border: 1px solid white;
+            border-radius: ($size-circle-icon / 2) + 0.1rem;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 0.4rem;
+        }
+
+        &:hover{
+            border-bottom-color: $colour-active;
+        }
+
+        &[aria-selected="true"]{
+            border-bottom-color: $colour-active;
+            font-weight: 600;
+        }
+
+        &.issue{
+
+            .circle-icon{
+                display: inline-flex;
+                background-color: $colour-issue;
+                background-image: url($icon-exclamation);
+              }
+        }
+    }
+}

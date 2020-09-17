@@ -1,4 +1,4 @@
 import './sass/styles.scss';
-import myFunc from './js/scripts';
+import { Tabs } from './js/tabs';
 
-export { myFunc };
+Tabs.init();

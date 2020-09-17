@@ -23,12 +23,11 @@ const init = async (env, argv) => {
         })
     })
     return {
+        target: 'node',
         entry: './src/index.js',
         output: {
             path: path.resolve(__dirname, 'dist'),
-            filename: 'js/scripts.js',
-            library: 'MyLibrary',
-            libraryTarget: 'var'
+            filename: 'js/scripts.js'
         },
         devtool: argv.mode === 'development' ? 'source-map' : false,
         watch: argv.mode === 'development' ? true : false,
