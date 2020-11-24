@@ -3,5 +3,7 @@
 @import 'components/base';
 @import 'components/susi_stepper';
 @import 'components/susi_tabs';
+@import 'components/susi_autocomplete';
+@import '~slim-select/dist/slimselect.min.css';
 
 @import '../views/**/*.scss'; // import any additional scss files from views folder

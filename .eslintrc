@@ -9,7 +9,9 @@
     "rules": {
         "linebreak-style": 0, /* Remove linebreak check due to discrepancy between Unix and Windows */
         "indent": [2, 4],
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "no-new": 0,
+        "no-console": 0
     },
     "env": {
         "browser": true
